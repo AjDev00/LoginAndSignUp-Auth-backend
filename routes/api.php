@@ -20,4 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 //inserting blogs.
-Route::post('users', [UserController::class,'store']);
+Route::post('/users', [UserController::class,'store']);
