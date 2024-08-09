@@ -19,5 +19,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//inserting blogs.
+//sign-up users.
 Route::post('/users', [UserController::class,'store']);
+
+//log-in users.
+Route::get('get-details/{name}/{password}', [UserController::class,'getDetails']);
+
+//forgotten password.
+Route::put('update-password/{id}', [UserController::class,'update']);
