@@ -26,4 +26,4 @@ Route::post('/users', [UserController::class,'store']);
 Route::get('get-details/{name}/{password}', [UserController::class,'getDetails']);
 
 //forgotten password.
-Route::put('update-password/{id}', [UserController::class,'update']);
+Route::put('update-password/{name}', [UserController::class,'update']);
