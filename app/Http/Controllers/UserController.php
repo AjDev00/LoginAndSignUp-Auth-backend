@@ -68,11 +68,11 @@ class UserController extends Controller
 
     //forgotten password.
     public function update($name, Request $request){
-        $user = User::where('email', $name)
-                    ->orWhere('name', $name)
-                    ->find('password');
+        $user = User::where('name', $name)
+                    ->orWhere('email', $name)
+                    ->first(); //get the first password matching the username/email.
 
-        //return error if the name inputted is not in the DB.
+        //return error if the name/email inputted is not in the DB.
         if($user === null){
             return response()->json([
                 'status' => false,
@@ -97,7 +97,7 @@ class UserController extends Controller
 
         //update password in the DB.
         $user->password = Hash::make( $request->password );
-        $user->update();
+        $user->save();
 
         return response()->json([
             'status' => true,
